@@ -32,20 +32,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      # 关键：将所有者名称转为小写
-      - name: Convert owner to lowercase
-        run: echo "OWNER_LC=${OWNER,,}" >> $GITHUB_ENV
-        env:
-          OWNER: ${{ github.repository_owner }}
-
       - name: Build and push Docker image
         uses: docker/build-push-action@v7
         with:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
+          # ✅ 直接写死小写用户名（你的 GitHub 用户名小写是 passionaries）
           tags: |
-            ghcr.io/${{ env.OWNER_LC }}/15645dsag:latest   # 使用小写变量
+            ghcr.io/passionaries/15645dsag:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=HTTP Server
