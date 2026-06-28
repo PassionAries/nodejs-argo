@@ -40,7 +40,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           # ✅ 直接写死小写用户名（你的 GitHub 用户名小写是 passionaries）
           tags: |
-            ghcr.io/passionaries/15645dsag:latest
+            ghcr.io/passionaries/dfsagdsag:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ github.repository }}
             org.opencontainers.image.description=HTTP Server
